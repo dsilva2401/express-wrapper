@@ -3,7 +3,14 @@ Express Wrapper
 
 An easy way to organize your express code..
 
+### Installation
+```bash
+npm install express-wrapper --save
+```
+
 ### Getting started
+
+*You can clone a wrapper [seed](https://github.com/dsilva2401/express-wrapper-seed)*
 
 ```js
 // app.js
@@ -159,7 +166,7 @@ app.addRoute( function ( $database, $config ) {
 
 `app.run`
 ---------------
-Run anything :)
+Do anything :)
 
 *Example*
 ```js
