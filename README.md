@@ -35,6 +35,7 @@ var app = new ExpressWrapper();
 - `$global`
 - `$server`
 - `$router`
+- `$express`
 
 
 ### Methods Reference
@@ -223,3 +224,7 @@ HTTP Server instance
 `$router`
 ---------
 Express router instance
+
+`$express`
+---------
+Express module

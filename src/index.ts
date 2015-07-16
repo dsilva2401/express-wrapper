@@ -42,7 +42,8 @@ class ExpressWrapper {
 			'$databases': this.databases,
 			'$global': this.global,
 			'$server': this.server,
-			'$router': this.router
+			'$router': this.router,
+			'$express': express
 		};
 	}
 
