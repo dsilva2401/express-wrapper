@@ -17,6 +17,8 @@ var app = new ExpressWrapper();
 - `.config(..)`
 - `.addDatabase(..)`
 - `.addRoute(..)`
+- `.run(..)`
+- `.up(..)`
 
 ### Available dependencies
 
@@ -24,6 +26,8 @@ var app = new ExpressWrapper();
 - `$config`
 - `$database`
 - `$global`
+- `$server`
+- `$router`
 
 
 ### Methods Reference
@@ -153,6 +157,37 @@ app.addRoute( function ( $database, $config ) {
 });
 ```
 
+`app.run`
+---------------
+Run anything :)
+
+*Example*
+```js
+var SocketIO = require('socket.io');
+
+app.run( function ($server) {
+    // Setup a socket server
+    var io = SocketIO($server);
+    io.on('connection', function (socket) {
+        socket.emit('news', { hello: 'world' });
+        socket.on('my other event', function (data) {
+            console.log(data);
+        });
+    });
+    ..
+});
+```
+
+`app.up`
+---------------
+Start server at host and port set at `config` method
+
+*Example*
+```js
+app.up();
+```
+
+
 ### Dependencies Reference
 `$app`
 ------
@@ -171,3 +206,13 @@ Object with databases
 `$global`
 ---------
 Object that contain global variables
+
+
+`$server`
+---------
+HTTP Server instance
+
+
+`$router`
+---------
+Express router instance
