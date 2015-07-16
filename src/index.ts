@@ -56,6 +56,7 @@ class ExpressWrapper {
 		).split(',');
 		var linkedDependencies: Array<any> = [];
 		dependencies.forEach(function (d) {
+			d = d.replace(/ /g, '');
 			linkedDependencies.push(self._dependencies()[d]);
 		});
 		return linkedDependencies;

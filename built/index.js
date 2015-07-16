@@ -40,6 +40,7 @@ var ExpressWrapper = (function () {
         var dependencies = strFn.substring(strFn.indexOf('(') + 1, strFn.indexOf(')')).split(',');
         var linkedDependencies = [];
         dependencies.forEach(function (d) {
+            d = d.replace(/ /g, '');
             linkedDependencies.push(self._dependencies()[d]);
         });
         return linkedDependencies;
