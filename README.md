@@ -47,10 +47,10 @@ Is used to initialize app
 
 *Example*
 ```js
-app.init( function ( $app, $config ) {
+app.init( function ( $app, $config, $express ) {
     $app.use(logger('dev'));
-    app.use(
-        express.static($config.publicDir)
+    $app.use(
+        $express.static($config.publicDir)
     );
     $app.use(bodyParser.json());
     $app.use(bodyParser.urlencoded({
