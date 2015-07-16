@@ -1,0 +1,26 @@
+{
+  "name": "express-wrapper",
+  "version": "0.0.0",
+  "description": "An easy way to organize your express app code",
+  "main": "built/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/dsilva2401/express-wrapper.git"
+  },
+  "author": "Diego Silva <dsilva2401@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dsilva2401/express-wrapper/issues"
+  },
+  "homepage": "https://github.com/dsilva2401/express-wrapper#readme",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-typescript": "^2.7.8"
+  },
+  "dependencies": {
+    "express": "^4.13.1"
+  }
+}

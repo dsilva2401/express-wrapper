@@ -7,8 +7,8 @@ An easy way to organize your express code..
 
 ```js
 // app.js
-var expressWrapper = require('express-wrapper');
-var app = new expressWrapper();
+var ExpressWrapper = require('express-wrapper');
+var app = new ExpressWrapper();
 ```
 
 ### Methods
@@ -18,7 +18,7 @@ var app = new expressWrapper();
 - `.addDatabase(..)`
 - `.addRoute(..)`
 
-### Available dependencias
+### Available dependencies
 
 - `$app`
 - `$config`
