@@ -9,6 +9,7 @@ class ExpressWrapper {
 	private router: express.Router;
 	private databases: Object;
 	private global: Object;
+	private methods: Object;
 	private server: any;
 
 	// Constructor
@@ -17,6 +18,7 @@ class ExpressWrapper {
 		this.router = express.Router();
 		this.app = app || express();
 		this.global = {};
+		this.methods = {};
 		this.server = http.Server(this.app);
 		this.databases = {};
 	}
@@ -43,7 +45,8 @@ class ExpressWrapper {
 			'$global': this.global,
 			'$server': this.server,
 			'$router': this.router,
-			'$express': express
+			'$express': express,
+			'$methods': this.methods,
 		};
 	}
 

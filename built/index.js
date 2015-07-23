@@ -7,6 +7,7 @@ var ExpressWrapper = (function () {
         this.router = express.Router();
         this.app = app || express();
         this.global = {};
+        this.methods = {};
         this.server = http.Server(this.app);
         this.databases = {};
     }
@@ -31,7 +32,8 @@ var ExpressWrapper = (function () {
             '$global': this.global,
             '$server': this.server,
             '$router': this.router,
-            '$express': express
+            '$express': express,
+            '$methods': this.methods
         };
     };
     ExpressWrapper.prototype._resolveDependencies = function (fn) {
