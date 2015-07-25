@@ -1,6 +1,6 @@
 {
   "name": "express-wrapper",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "An easy way to organize your express app code",
   "main": "built/index.js",
   "scripts": {
@@ -21,6 +21,7 @@
     "gulp-typescript": "^2.7.8"
   },
   "dependencies": {
-    "express": "^4.13.1"
+    "express": "^4.13.1",
+    "q": "^1.4.1"
   }
 }

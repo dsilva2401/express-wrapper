@@ -36,6 +36,7 @@ var app = new ExpressWrapper();
 - `$server`
 - `$router`
 - `$express`
+- `$q`
 
 
 ### Methods Reference
@@ -225,6 +226,12 @@ HTTP Server instance
 ---------
 Express router instance
 
+
 `$express`
 ---------
 Express module
+
+
+`$q`
+---------
+[Q](https://www.npmjs.com/package/q) module

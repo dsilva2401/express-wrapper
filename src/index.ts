@@ -1,5 +1,6 @@
 import express = require('express');
 import http = require('http');
+import Q = require('q');
 
 class ExpressWrapper {
 
@@ -47,6 +48,7 @@ class ExpressWrapper {
 			'$router': this.router,
 			'$express': express,
 			'$methods': this.methods,
+			'$q': Q
 		};
 	}
 

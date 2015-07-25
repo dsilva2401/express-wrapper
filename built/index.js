@@ -1,5 +1,6 @@
 var express = require('express');
 var http = require('http');
+var Q = require('q');
 var ExpressWrapper = (function () {
     // Constructor
     function ExpressWrapper(app) {
@@ -33,7 +34,8 @@ var ExpressWrapper = (function () {
             '$server': this.server,
             '$router': this.router,
             '$express': express,
-            '$methods': this.methods
+            '$methods': this.methods,
+            '$q': Q
         };
     };
     ExpressWrapper.prototype._resolveDependencies = function (fn) {
