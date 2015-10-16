@@ -3,13 +3,14 @@ var http = require('http');
 var Q = require('q');
 var ExpressWrapper = (function () {
     // Constructor
-    function ExpressWrapper(app) {
+    function ExpressWrapper(options) {
+        options = options || {};
         this.configData = this._getDefaultConfig();
         this.router = express.Router();
-        this.app = app || express();
+        this.app = options.app || express();
         this.global = {};
         this.methods = {};
-        this.server = http.Server(this.app);
+        this.server = options.server || http.Server(this.app);
         this.databases = {};
     }
     // Methods
