@@ -104,15 +104,21 @@ var ExpressWrapper = (function () {
         this._resolveFunction(fn);
     };
     ExpressWrapper.prototype.up = function () {
+        var self = this;
         var configData = this.configData;
         // HTTP server
         this.httpServer.listen(configData.httpServer.port, configData.httpServer.host, function () {
             console.log('Server at http://' + configData.httpServer.host + ':' + configData.httpServer.port);
         });
         // HTTPS Server
-        this.httpsServer.listen(configData.httpsServer.port, configData.httpsServer.host, function () {
-            console.log('Server at https://' + configData.httpsServer.host + ':' + configData.httpsServer.port);
-        });
+        var csInterval = setInterval(function () {
+            if (self.httpsServer) {
+                self.httpsServer.listen(configData.httpsServer.port, configData.httpsServer.host, function () {
+                    console.log('Server at https://' + configData.httpsServer.host + ':' + configData.httpsServer.port);
+                });
+                clearInterval(csInterval);
+            }
+        }, 1);
     };
     return ExpressWrapper;
 })();

@@ -134,6 +134,7 @@ class ExpressWrapper {
 	}
 
 	public up (): void {
+		var self: any = this;
 		var configData = this.configData;
 		// HTTP server
 		this.httpServer.listen(
@@ -146,15 +147,20 @@ class ExpressWrapper {
 			}
 		);
 		// HTTPS Server
-		this.httpsServer.listen(
-			configData.httpsServer.port,
-			configData.httpsServer.host,
-			function () {
-				console.log(
-					'Server at https://'+configData.httpsServer.host+':'+configData.httpsServer.port
+		var csInterval = setInterval(function () {
+			if (self.httpsServer) {
+				self.httpsServer.listen(
+					configData.httpsServer.port,
+					configData.httpsServer.host,
+					function () {
+						console.log(
+							'Server at https://'+configData.httpsServer.host+':'+configData.httpsServer.port
+						);
+					}
 				);
+				clearInterval(csInterval);
 			}
-		);
+		},1);
 	}
 
 }
