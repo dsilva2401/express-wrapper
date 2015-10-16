@@ -1,26 +1,43 @@
 var express = require('express');
 var http = require('http');
+var https = require('https');
 var Q = require('q');
+var pem = require('pem');
 var ExpressWrapper = (function () {
     // Constructor
     function ExpressWrapper(options) {
+        var self = this;
         options = options || {};
         this.configData = this._getDefaultConfig();
         this.router = express.Router();
         this.app = options.app || express();
         this.global = {};
         this.methods = {};
-        this.server = options.server || http.Server(this.app);
         this.databases = {};
+        this.httpServer = options.httpServer || http.Server(this.app);
+        pem.createCertificate(options.httpsOptions || { days: 36500, selfSigned: true }, function (err, keys) {
+            if (err) {
+                console.warn('Error creating certificates', err);
+                return;
+            }
+            self.httpsServer = options.httpsServer || https.Server(options.httpsKeys || {
+                key: keys.serviceKey,
+                cert: keys.certificate
+            }, self.app);
+        });
     }
     // Methods
     ExpressWrapper.prototype._getDefaultConfig = function () {
         return {
             env: 'dev',
             publicDir: 'public/',
-            server: {
+            httpServer: {
                 host: 'localhost',
-                port: 3000
+                port: 80
+            },
+            httpServer: {
+                host: 'localhost',
+                port: 443
             },
             databases: {}
         };
@@ -87,9 +104,14 @@ var ExpressWrapper = (function () {
         this._resolveFunction(fn);
     };
     ExpressWrapper.prototype.up = function () {
-        var sConfig = this.configData.server;
-        this.server.listen(sConfig.port, sConfig.host, function () {
-            console.log('Server at http://' + sConfig.host + ':' + sConfig.port);
+        var configData = this.configData;
+        // HTTP server
+        this.httpServer.listen(configData.httpServer.port, configData.httpServer.host, function () {
+            console.log('Server at http://' + configData.httpServer.host + ':' + configData.httpServer.port);
+        });
+        // HTTPS Server
+        this.httpsServer.listen(configData.httpsServer.port, configData.httpsServer.host, function () {
+            console.log('Server at https://' + configData.httpsServer.host + ':' + configData.httpsServer.port);
         });
     };
     return ExpressWrapper;

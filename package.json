@@ -1,6 +1,6 @@
 {
   "name": "express-wrapper",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "An easy way to organize your express app code",
   "main": "built/index.js",
   "scripts": {
@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "express": "^4.13.1",
+    "pem": "^1.8.1",
     "q": "^1.4.1"
   }
 }
