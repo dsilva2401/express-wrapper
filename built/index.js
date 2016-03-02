@@ -13,6 +13,7 @@ var ExpressWrapper = (function () {
         this.app = options.app || express();
         this.global = {};
         this.methods = {};
+        this.engines = {};
         this.databases = {};
         this.httpServer = options.httpServer || http.Server(this.app);
         pem.createCertificate(options.httpsOptions || { days: 36500, selfSigned: true }, function (err, keys) {
@@ -53,6 +54,7 @@ var ExpressWrapper = (function () {
             '$router': this.router,
             '$express': express,
             '$methods': this.methods,
+            '$engines': this.engines,
             '$q': Q
         };
     };

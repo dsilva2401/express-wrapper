@@ -13,6 +13,7 @@ class ExpressWrapper {
 	private databases: Object;
 	private global: Object;
 	private methods: Object;
+	private engines: Object;
 	private server: any;
 
 	// Constructor
@@ -24,6 +25,7 @@ class ExpressWrapper {
 		this.app = options.app || express();
 		this.global = {};
 		this.methods = {};
+		this.engines = {};
 		this.databases = {};
 		this.httpServer = options.httpServer || http.Server(this.app);
 		pem.createCertificate(options.httpsOptions || { days:36500, selfSigned:true }, function(err, keys){
@@ -66,6 +68,7 @@ class ExpressWrapper {
 			'$router': this.router,
 			'$express': express,
 			'$methods': this.methods,
+			'$engines': this.engines,
 			'$q': Q
 		};
 	}

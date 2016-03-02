@@ -1,6 +1,6 @@
 {
   "name": "express-wrapper",
-  "version": "2.0.2",
+  "version": "2.1.0",
   "description": "An easy way to organize your express app code",
   "main": "built/index.js",
   "scripts": {
